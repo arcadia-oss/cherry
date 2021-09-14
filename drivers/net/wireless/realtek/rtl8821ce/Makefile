@@ -21,13 +21,7 @@ ifeq ($(GCC_VER_49),1)
 EXTRA_CFLAGS += -Wno-date-time	# Fix compile error && warning on gcc 4.9 and later
 endif
 
-ifeq (,$(srctree))
-    # make processing
-    export TopDIR ?= $(shell pwd)
-else
-    # dkms processing or in tree compilation
-    export TopDIR ?= $(srctree)/$(src)
-endif
+export TopDIR ?= $(srctree)/$(src)
 
 EXTRA_CFLAGS += -I$(TopDIR)/include
 
