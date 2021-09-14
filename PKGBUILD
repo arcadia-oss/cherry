@@ -20,9 +20,9 @@ makedepends=(
   git
 )
 options=('!strip')
-_srcname=linux-mainline
+_srcname=linux-cherry
 source=(
-  "$_srcname::git+https://github.com/arcadia-oss/cherry/commits/$_tag"
+  "$_srcname::git+https://github.com/arcadia-oss/cherry"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
