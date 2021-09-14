@@ -1,0 +1,20 @@
+--- 
+clone: 
+  depth: 1
+kind: pipeline
+name: EvaPipeline
+steps: 
+  - name: Kernel Pipeline
+    image: archlinux:base-devel
+    commands: 
+      - make O=out cherry_defconfig
+      - make O=out -j$(nproc --all)
+  - name: Publish
+    image: plugins/github-release
+    settings:
+      api_key:
+         from_secret: github_token
+      files: out/arch/x86_64/boot/bzImage 
+      title: Beta1
+    when: 
+      event: tag
